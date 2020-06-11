@@ -2,12 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Progate</title>
+  <title>Test</title>
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
   <div class="header">
-    <div class="header-left">Progate</div>
+    <div class="header-left">Test</div>
     <div class="header-right">
       <ul>
         <li>会社概要</li>
