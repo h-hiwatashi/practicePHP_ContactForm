@@ -44,9 +44,7 @@
         <li>お問い合わせ</li>
       </ul>
     </div>
-    <div class="like-box">
-      <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FProgate%2F742679992421539&amp;show_faces=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:300px;" allowTransparency="true"></iframe>
-    </div>
+
   </div>
 </body>
 </html>
