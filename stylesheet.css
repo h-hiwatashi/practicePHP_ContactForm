@@ -15,7 +15,7 @@ li {
 .header-left {
   float: left;
   padding: 10px 60px;
-  color: #ED7000;
+  color: #000000;
   font-size: 30px;
 }
 
@@ -42,7 +42,7 @@ li {
   width: 70%;
   margin: 60px auto;
   padding: 50px;
-  background-color: #F5F5F5;
+  background-color: #D9E5FF;
   color: #333;
 }
 
