@@ -23,6 +23,9 @@
       <form method="post" action="sent.php">
         <div class="form-item">名前</div>
         <input type="text" name="name">
+        
+        <div class="form-item">メールアドレス</div>
+        <input type="email" name="email">
 
         <div class="form-item">年齢</div>
         <select name="age">
