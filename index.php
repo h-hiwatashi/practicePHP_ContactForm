@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+//phpinfo();
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -11,6 +14,13 @@
     <div class="header-right">
       <ul>
         <li>会社概要</li>
+        <li>
+          <?phpsession_start();
+          if (!session_start()) {
+            echo 'セッション開始失敗！';
+          }
+          ?>
+        </li>
         <li>採用</li>
         <li class="selected">お問い合わせ</li>
       </ul>
@@ -20,7 +30,7 @@
   <div class="main">
     <div class="contact-form">
       <div class="form-title">お問い合わせ</div>
-      <form method="post" action="sent.php">
+      <form method="post" action="confirm.php">
         <div class="form-item">名前</div>
         <input type="text" name="name">
         
@@ -43,7 +53,6 @@
          ?>
         <select name="category">
           <option value="未選択">選択してください</option>
-          
           <?php
             foreach($types as $type){
               echo "<option value='{$type}'>{$type}</option>";
@@ -54,7 +63,17 @@
         <div class="form-item">内容</div>
         <textarea name="body"></textarea>
 
-        <input type="submit" value="送信">
+        <input type="submit" value="確認">
+        <?php
+
+        if(!isset($_SESSION['$csrfToken'])){
+          $csrfToken = bin2hex(random_bytes(32));
+          $_SESSION['$csrfToken'] = $csrfToken;
+        }
+        $token = $_SESSION['$csrfToken'];
+        var_dump($_SESSION) ;
+        ?>
+        <input type="hidden" name="$csrfToken" value="<?php echo $token; ?>"/>
       </form>
     </div>
   </div>
