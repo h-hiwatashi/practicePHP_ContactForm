@@ -25,12 +25,14 @@
   </div>
   <div class="main">
     <?php
-      var_dump($_SESSION);
-      var_dump($_POST['$csrfToken']);
+      //var_dump($_SESSION);
+      //var_dump($_POST['$csrfToken']);
       if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']) :
     ?>
     <div class="thanks-message">送信が完了しました。</div>
     <?php unset($_SESSION['$csrfToken']); ?>
+    <?php else: ?>
+    <div>セッションが無効です。</div>
     <?php endif; ?>
   </div>
   <div class="footer">
