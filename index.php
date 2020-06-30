@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php
+  session_start();
+  if (!session_start()) {
+    echo 'セッション開始失敗！';
+  }
 //phpinfo();
 ?>
 <html>
@@ -14,13 +18,6 @@
     <div class="header-right">
       <ul>
         <li>会社概要</li>
-        <li>
-          <?phpsession_start();
-          if (!session_start()) {
-            echo 'セッション開始失敗！';
-          }
-          ?>
-        </li>
         <li>採用</li>
         <li class="selected">お問い合わせ</li>
       </ul>
@@ -30,7 +27,7 @@
   <div class="main">
     <div class="contact-form">
       <div class="form-title">お問い合わせ</div>
-      <form method="post" action="confirm.php">
+      <form method="post" action="./confirm.php">
         <div class="form-item">名前</div>
         <input type="text" name="name">
         
@@ -40,7 +37,7 @@
         <div class="form-item">年齢</div>
         <select name="age">
           <option value="未選択">選択してください</option>
-          <?php 
+          <?php
             for($i=6; $i<=100; $i++){
               echo "<option value='{$i}'>{$i}</option>";
             }
@@ -65,19 +62,17 @@
 
         <input type="submit" value="確認">
         <?php
-
         if(!isset($_SESSION['$csrfToken'])){
           $csrfToken = bin2hex(random_bytes(32));
           $_SESSION['$csrfToken'] = $csrfToken;
         }
         $token = $_SESSION['$csrfToken'];
-        var_dump($_SESSION) ;
+        //var_dump($_SESSION) ;
         ?>
         <input type="hidden" name="$csrfToken" value="<?php echo $token; ?>"/>
       </form>
     </div>
   </div>
-  
   <div class="footer">
     <div class="footer-left">
       <ul>
@@ -86,7 +81,6 @@
         <li>お問い合わせ</li>
       </ul>
     </div>
-
   </div>
 </body>
 </html>

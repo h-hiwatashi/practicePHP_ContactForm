@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+  if (!session_start()) {
+    echo 'セッション開始失敗！';
+  }
+//phpinfo();
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -13,24 +20,19 @@
         <li>会社概要</li>
         <li>採用</li>
         <li class="selected">お問い合わせ</li>
-        
-        <?php
-        echo '<pre>';
-        var_dump($_SESSION);
-        echo '<pre>';
-        ?>
-        
       </ul>
     </div>
   </div>
-
   <div class="main">
-    <?php if($_POST[$csrf] === $_SESSION['csrfToken']): ?>
+    <?php
+      var_dump($_SESSION);
+      var_dump($_POST['$csrfToken']);
+      if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']) :
+    ?>
     <div class="thanks-message">送信が完了しました。</div>
-    <?php unset($_SESSION['csrfToken']); ?>
+    <?php unset($_SESSION['$csrfToken']); ?>
     <?php endif; ?>
   </div>
-
   <div class="footer">
     <div class="footer-left">
       <ul>
@@ -39,7 +41,6 @@
         <li>お問い合わせ</li>
       </ul>
     </div>
-
   </div>
 </body>
 </html>

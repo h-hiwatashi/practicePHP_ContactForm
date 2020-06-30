@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+  if (!session_start()) {
+    echo 'セッション開始失敗！';
+  }
+//phpinfo();
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -19,15 +26,10 @@
 
   <div class="main">
     <div class="thanks-message">お問い合わせいただきありがとうございます。</div>
-    <form method="post" action = “thanks.php”>
+    <form method="post" action="./thanks.php">
       <?php
-      session_start ();
-      var_dump($_SESSION);
-      $csrfToken = $_SESSION['$csrfToken'];
-      echo $csrfToken;
-      echo '<br>';
-      echo $_POST['$csrfToken'];
-      echo '<br>';
+      //var_dump($_SESSION);
+      if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']) :
       ?>
       <div class="display-contact">
         <div class="form-title">入力内容</div>
@@ -57,12 +59,13 @@
         <input type="hidden" name="age" value="<?php echo $_POST['age']; ?>"/>
         <input type="hidden" name="category" value="<?php echo $_POST['category']; ?>"/>
         <input type="hidden" name="body" value="<?php echo $_POST['body']; ?>"/>
-        <input type="hidden" name="csrf" value="<?php echo $_POST['csrf']; ?>"/>
+        <input type="hidden" name="$csrfToken" value="<?php echo $_POST['$csrfToken']; ?>"/>
       </div>
     </form>
-
+    <?php else: ?>
+    <div>セッションが無効です。</div>
+    <?php endif; ?>
   </div>
-
   <div class="footer">
     <div class="footer-left">
       <ul>
