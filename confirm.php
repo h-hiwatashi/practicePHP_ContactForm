@@ -5,6 +5,7 @@
     echo 'セッション開始失敗！';
   }
 //phpinfo();
+require_once("validation.php");
 ?>
 <html>
 <head>
@@ -27,19 +28,31 @@
   <div class="main">
     <div class="thanks-message">お問い合わせいただきありがとうございます。</div>
     <form method="post" action="./thanks.php">
-      <?php
-      //var_dump($_SESSION);
-      if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']) :
-      ?>
+      <?php //var_dump($_SESSION); ?>
+      <?php if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']): ?>
+      <?php $error = validation($_POST); ?>
+      
+      <?php if(!empty($error)): ?>
+      <ul>
+      <?php foreach($error as $value): ?>
+        <li><?php echo $value; ?></li>
+      <?php endforeach; ?>
+      </ul>
+      <?php endif; ?>
+      
       <div class="display-contact">
         <div class="form-title">入力内容</div>
   
-        <div class="form-item">■ 名前</div>
+        <div class="form-item">■ 氏名</div>
         <?php echo $_POST['name']; ?>
         
         <div class="form-item">■ メールアドレス</div>
         <?php echo $_POST['email']; ?>
-  
+        
+        <div class="form-item">■ 性別</div>
+        <?php if($_POST['gender'] === '0'){echo '男性';} ?>
+        <?php if($_POST['gender'] === '1'){echo '女性';} ?>
+        
         <div class="form-item">■ 年齢</div>
         <?php echo $_POST['age']; ?>
   
@@ -49,8 +62,6 @@
         <div class="form-item">■ 内容</div>
         <?php echo $_POST['body']; ?>
           
-        
-        
         <input type="submit" name="back" value="戻る"/> 
         <input type="submit" value="送信"/>
         

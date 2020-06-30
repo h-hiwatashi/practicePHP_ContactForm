@@ -5,6 +5,7 @@
     echo 'セッション開始失敗！';
   }
 //phpinfo();
+//require_once(validation.php);
 ?>
 <html>
 <head>
@@ -28,12 +29,16 @@
     <div class="contact-form">
       <div class="form-title">お問い合わせ</div>
       <form method="post" action="./confirm.php">
-        <div class="form-item">名前</div>
+        <div class="form-item">氏名</div>
         <input type="text" name="name">
         
         <div class="form-item">メールアドレス</div>
         <input type="email" name="email">
 
+        <div class="form-item">性別</div>
+        <input type="radio" name="gender" value="0">男性</input>
+        <input type="radio" name="gender" value="1">女性</input>
+        
         <div class="form-item">年齢</div>
         <select name="age">
           <option value="未選択">選択してください</option>
