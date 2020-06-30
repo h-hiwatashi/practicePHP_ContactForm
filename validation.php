@@ -13,7 +13,9 @@ function validation($data){
     }
     
     //gender
-    
+    if(empty($data['gender'])){
+        $error[] = '性別を入力してください';
+    }
     
     //age
     
