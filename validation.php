@@ -18,6 +18,9 @@ function validation($data){
     }
     
     //age
+    if($data['age'] === '未選択' ){
+        $error[] = '年齢を入力してください';
+    }
     
     
     //問い合わせ内容
