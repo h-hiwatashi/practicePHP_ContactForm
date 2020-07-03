@@ -22,10 +22,15 @@ function validation($data){
         $error[] = '年齢を入力してください';
     }
     
+    //問い合わせの種類
+    if($data['category'] === '未選択' ){
+        $error[] = 'お問い合わせ種類を選択してください';
+    }
+    
     
     //問い合わせ内容
     if(empty($data['contact']) || 200 < mb_strlen($data['contact'])){
-        $error[] = '氏名は200文字以内で入力してください';
+        $error[] = '内容は200文字以内で入力してください';
     }
     
     return $error;

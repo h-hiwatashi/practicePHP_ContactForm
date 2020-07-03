@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Test</title>
+  </head>
 <?php
   session_start();
   if (!session_start()) {
@@ -7,12 +18,7 @@
 //phpinfo();
 require_once("validation.php");
 ?>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Test</title>
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-</head>
+
 <body>
   <div class="header">
     <div class="header-left">Test</div>
@@ -43,23 +49,23 @@ require_once("validation.php");
       <div class="display-contact">
         <div class="form-title">入力内容</div>
   
-        <div class="form-item">■ 氏名</div>
+        <div class="form-group">■ 氏名</div>
         <?php echo $_POST['name']; ?>
         
-        <div class="form-item">■ メールアドレス</div>
+        <div class="form-group">■ メールアドレス</div>
         <?php echo $_POST['email']; ?>
         
-        <div class="form-item">■ 性別</div>
+        <div class="form-group">■ 性別</div>
         <?php if($_POST['gender'] === '0'){echo '男性';} ?>
         <?php if($_POST['gender'] === '1'){echo '女性';} ?>
         
-        <div class="form-item">■ 年齢</div>
+        <div class="form-group">■ 年齢</div>
         <?php echo $_POST['age']; ?>
   
-        <div class="form-item">■ お問い合わせの種類</div>
+        <div class="form-group">■ お問い合わせの種類</div>
         <?php echo $_POST['category']; ?>
         
-        <div class="form-item">■ 内容</div>
+        <div class="form-group">■ 内容</div>
         <?php echo $_POST['body']; ?>
           
         <input type="submit" name="back" value="戻る"/> 
@@ -85,7 +91,10 @@ require_once("validation.php");
         <li>お問い合わせ</li>
       </ul>
     </div>
-
-  </div>
-</body>
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
 </html>
