@@ -34,7 +34,7 @@ require_once("validation.php");
   <div class="main">
     <div class="thanks-message">お問い合わせいただきありがとうございます。</div>
     <form method="post" action="./thanks.php">
-      <?php //var_dump($_SESSION); ?>
+      <?php var_dump($_SESSION); ?>
       <?php if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']): ?>
       <?php $error = validation($_POST); ?>
       
