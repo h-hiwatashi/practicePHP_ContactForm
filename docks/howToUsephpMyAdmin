@@ -1,0 +1,21 @@
+https://www.phpmyadmin.net/downloads/ にアクセスしてphpMyAdminの最新バージョンを確認
+$ sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.8.5/phpMyAdmin-4.8.5-all-languages.zip
+unzipコマンドで解凍
+$ sudo unzip phpMyAdmin-4.8.5-all-languages.zip
+mvコマンドでフォルダ名をphpMyAdmin変更する
+$ sudo mv phpMyAdmin-4.8.5-all-languages phpMyAdmin
+mvコマンドで、config.sample.inc.php を config.inc.php にファイル名変更する
+$ sudo mv phpMyAdmin/config.sample.inc.php phpMyAdmin/config.inc.php
+chmod でファイルの実行権限を変更し、編集できるようにする
+$ sudo chmod 777 phpMyAdmin/config.inc.php
+config.inc.phpの['AllowNoPassword']を false → true に変更
+chmod でファイルの実行権限を変更し、誰でも上書きできないようにする
+$ sudo chmod 755 phpMyAdmin/config.inc.php
+MySQLを起動
+$ sudo service mysqld start
+PHPのサーバーを起動
+$ php -S $IP:$PORT
+プレビューする
+phpMyAdmin/index.php を 開いて、 Preview Running Application をクリック
+phpMyAdmin/index.php にアクセス (Cloud9の編集ページ内のPreviewではなく、新しいタブでPreviewを開きましょう)
+https://XXXXX.vfs.cloud9.XXXXX.amazonaws.com/phpMyAdmin/index.php
