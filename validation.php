@@ -8,7 +8,7 @@ function validation($data){
     }
     
     //mail
-    if(empty($data['email']) || !fileter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+    if(empty($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
         $error[] = '正しい形式でメールアドレスを入力してください';
     }
     

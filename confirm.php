@@ -32,56 +32,80 @@ require_once("validation.php");
   </div>
 
   <div class="main">
-    <div class="thanks-message">お問い合わせいただきありがとうございます。</div>
-    <form method="post" action="./thanks.php">
-      <?php var_dump($_SESSION); ?>
-      <?php if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']): ?>
-      <?php $error = validation($_POST); ?>
-      
-      <?php if(!empty($error)): ?>
-      <ul>
-      <?php foreach($error as $value): ?>
-        <li><?php echo $value; ?></li>
-      <?php endforeach; ?>
-      </ul>
-      <?php endif; ?>
-      
-      <div class="display-contact">
-        <div class="form-title">入力内容</div>
-  
-        <div class="form-group">■ 氏名</div>
-        <?php echo $_POST['name']; ?>
-        
-        <div class="form-group">■ メールアドレス</div>
-        <?php echo $_POST['email']; ?>
-        
-        <div class="form-group">■ 性別</div>
-        <?php if($_POST['gender'] === '0'){echo '男性';} ?>
-        <?php if($_POST['gender'] === '1'){echo '女性';} ?>
-        
-        <div class="form-group">■ 年齢</div>
-        <?php echo $_POST['age']; ?>
-  
-        <div class="form-group">■ お問い合わせの種類</div>
-        <?php echo $_POST['category']; ?>
-        
-        <div class="form-group">■ 内容</div>
-        <?php echo $_POST['body']; ?>
+    <div class="contact-form">
+      <div class="form-title">お問い合わせ</div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6" style="margin-top:30px; margin-bottom:30px;">
+            <div class="thanks-message">お問い合わせいただきありがとうございます。</div>
+            <form method="post" action="./thanks.php">
+              <?php //var_dump($_SESSION); ?>
+              <?php if ($_POST['$csrfToken'] === $_SESSION['$csrfToken']): ?>
+              <?php $error = validation($_POST); ?>
+              
+              <?php if(!empty($error)): ?>
+              <ul>
+              <?php foreach($error as $value): ?>
+                <li><?php echo $value; ?></li>
+              <?php endforeach; ?>
+              </ul>
+              <?php endif; ?>
+              
+              <div class="display-contact">
+                <div class="form-title">入力内容</div>
           
-        <input type="submit" name="back" value="戻る"/> 
-        <input type="submit" value="送信"/>
-        
-        <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>"/>
-        <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>"/>
-        <input type="hidden" name="age" value="<?php echo $_POST['age']; ?>"/>
-        <input type="hidden" name="category" value="<?php echo $_POST['category']; ?>"/>
-        <input type="hidden" name="body" value="<?php echo $_POST['body']; ?>"/>
-        <input type="hidden" name="$csrfToken" value="<?php echo $_POST['$csrfToken']; ?>"/>
+                <div class="form-group">
+                  <div class="name">■ 氏名</div>
+                  <?php echo $_POST['name']; ?>
+                </div>
+                
+                <div class="form-group">
+                <div class="email">■ メールアドレス</div>
+                <?php echo $_POST['email']; ?>
+                </div>
+                
+                <div class="form-group">
+                <div class="gender">■ 性別</div>
+                <?php if($_POST['gender'] === '0'){echo '男性';} ?>
+                <?php if($_POST['gender'] === '1'){echo '女性';} ?>
+                </div>
+                
+                <div class="form-group">
+                <div class="age">■ 年齢</div>
+                <?php echo $_POST['age']; ?>
+                </div>
+          
+                <div class="form-group">
+                <div class="category">■ お問い合わせの種類</div>
+                <?php echo $_POST['category']; ?>
+                </div>
+                
+                <div class="form-group">
+                <div class="body">■ 内容</div>
+                <?php echo $_POST['body']; ?>
+                </div>
+                
+                <div class="form-group">
+                <input class="btn btn-info" type="button" value="戻る" onClick="history.back()">
+                <input class="btn btn-info" type="submit" value="送信">
+                </div>
+                
+                <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>"/>
+                <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>"/>
+                <input type="hidden" name="age" value="<?php echo $_POST['age']; ?>"/>
+                <input type="hidden" name="category" value="<?php echo $_POST['category']; ?>"/>
+                <input type="hidden" name="body" value="<?php echo $_POST['body']; ?>"/>
+                <input type="hidden" name="$csrfToken" value="<?php echo $_POST['$csrfToken']; ?>"/>
+              </div>
+            </form>
+            <?php else: ?>
+            <div>セッションが無効です。</div>
+            <?php endif; ?>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
-    <?php else: ?>
-    <div>セッションが無効です。</div>
-    <?php endif; ?>
+    </div>
   </div>
   <div class="footer">
     <div class="footer-left">
