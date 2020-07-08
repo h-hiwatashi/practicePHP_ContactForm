@@ -19,3 +19,5 @@ $ php -S $IP:$PORT
 phpMyAdmin/index.php を 開いて、 Preview Running Application をクリック
 phpMyAdmin/index.php にアクセス (Cloud9の編集ページ内のPreviewではなく、新しいタブでPreviewを開きましょう)
 https://XXXXX.vfs.cloud9.XXXXX.amazonaws.com/phpMyAdmin/index.php
+
+phpMyAdmin - エラー 「mysqli拡張がありません」 が出た場合の対処法
