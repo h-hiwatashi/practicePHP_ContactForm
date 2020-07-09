@@ -16,7 +16,7 @@
   if (!session_start()) {
     echo 'セッション開始失敗！';
   }
-phpinfo();
+//phpinfo();
 //require_once(validation.php);
 ?>
 <!--
